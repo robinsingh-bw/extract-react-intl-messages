@@ -1,7 +1,10 @@
 {
   "extends": "@akameco/tsconfig",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "noImplicitAny": false,
+    "allowJs": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "allowJs": true
 }

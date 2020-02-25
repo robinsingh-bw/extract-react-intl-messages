@@ -114,13 +114,11 @@ const extractMessage = async (
       let localeMap =
         locale === defaultLocale
           ? // Create a clone so we can use only current valid messages below
-            { ...oldLocaleMaps[locale], ...newLocaleMaps[locale] }
-          : { ...newLocaleMaps[locale], ...oldLocaleMaps[locale] }
-      // Only keep existing keys
-      localeMap = pick(localeMap, Object.keys(newLocaleMaps[locale]))
+            { '#I18N#': 'This file is overridden by strings inside components - do not modify!', ...newLocaleMaps[locale] }
+          : { ...newLocaleMaps[locale], ...pick(oldLocaleMaps[locale], Object.keys(newLocaleMaps[locale])) } // Only keep existing keys
 
       const fomattedLocaleMap: object = flat
-        ? sortKeys(localeMap, { deep: true })
+        ? localeMap
         : unflatten(sortKeys(localeMap), { object: true })
 
       const fn = isJson(format) ? writeJson : writeYaml

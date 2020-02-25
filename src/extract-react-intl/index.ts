@@ -10,7 +10,7 @@ import {
   PluginItem
 } from '@babel/core'
 import readBabelrcUp from 'read-babelrc-up'
-import babelPluginReactIntl from 'babel-plugin-react-intl'
+import babelPluginReactIntl from './babel-plugin-react-intl'
 
 type LocaleMap = Record<string, Record<string, {}>>
 
